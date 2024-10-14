@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyController : MonoBehaviour
+public class KeyController : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private SoundConfig _soundConfig;
+    [SerializeField] private DoorController _doorController;
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        References.Instance.AudioHandler.PlaySound(_soundConfig);
+        _doorController.OpenGrate();
+        gameObject.SetActive(false);
     }
 }
