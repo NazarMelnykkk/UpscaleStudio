@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static SoundsData;
 
 
@@ -21,6 +22,8 @@ public class AudioHandler : MonoBehaviour, IDataPersistence
     [Header("KEYS")]
     private Dictionary<string, SoundConfig> _soundDictionary;
 
+
+    public UnityAction VolumeValueChanged;
 
     private void Awake()
     {
@@ -83,6 +86,26 @@ public class AudioHandler : MonoBehaviour, IDataPersistence
         }
     }
 
+    public void PlaySound(SoundConfig config , AudioSource audioSource)
+    {
+        Sound currentSound = config.Sound;
+
+        if (currentSound == null)
+        {
+            Debug.LogError($"Config {config.name} not found");
+            return;
+        }
+
+        audioSource.volume = GetVolumeByType(currentSound.Type);
+
+        if (audioSource != null)
+        {
+            SetRandomPitchValue(audioSource, currentSound);
+            audioSource.PlayOneShot(GetRandomClip(currentSound.AudioClip));
+        }
+
+    }
+
     private void SetRandomPitchValue(AudioSource audioSource, Sound sound)
     {
         audioSource.pitch = UnityEngine.Random.Range(sound.MinPitch, sound.MaxPitch);
@@ -125,6 +148,8 @@ public class AudioHandler : MonoBehaviour, IDataPersistence
         }
 
         SaveByType(References.Instance.DataPersistenceHandlerBase.GameData, type, volume);
+        VolumeValueChanged?.Invoke();
+
     }
 
     private AudioSource GetAudioSourceByType(SoundType type)

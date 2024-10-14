@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b81f1dcd9d95d4c874d3342aed512d, type: 3}
   m_Name: TestScene
   m_EditorClassIdentifier: 
-  SceneName: TestScene
+  SceneName: Modular Dungeon
   SceneField:
-    _sceneAsset: {fileID: 102900000, guid: a780763151f300840ade115fc9eddc90, type: 3}
-    _sceneName: TestScene
+    _sceneAsset: {fileID: 102900000, guid: 27915ac565aadf048b89a94d619c501d, type: 3}
+    _sceneName: Modular Dungeon
   LoadingOnInitialization: 0
   IsGameplayScene: 1
   DontUnload: 0
