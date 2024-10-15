@@ -1119,7 +1119,7 @@ MonoBehaviour:
   <AnimationBaseController>k__BackingField: {fileID: 4614943247173151985}
   <ObjectSoundController>k__BackingField: {fileID: 2812775087012237538}
   <TargetObject>k__BackingField: {fileID: 0}
-  <TriggerDistance>k__BackingField: 10
+  <TriggerDistance>k__BackingField: 12
   <AttackRange>k__BackingField: 2
   <Speed>k__BackingField: 4
   <RotateSpeed>k__BackingField: 120

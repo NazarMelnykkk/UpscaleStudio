@@ -5,7 +5,6 @@ public class EnemyIdleController : ICommandHandler
     private CommandHandlerBase _commandHandlerBase;
     private CommandBase _command;
 
-   // private Vector3 _defaultPos;
     private GameObject _targetObject;
     private AnimationBaseController _controller;
     private float _triggerRange;
@@ -18,7 +17,6 @@ public class EnemyIdleController : ICommandHandler
 
     private void Init()
     {
-        //_defaultPos = _commandHandlerBase.DataUnitHolder.gameObject.transform.position;
         _targetObject = _commandHandlerBase.DataUnitHolder.TargetObject;
         _controller = _commandHandlerBase.DataUnitHolder.AnimationBaseController;
         _triggerRange = _commandHandlerBase.DataUnitHolder.TriggerDistance;
@@ -33,6 +31,7 @@ public class EnemyIdleController : ICommandHandler
     private void Idle()
     {
         _controller.Idle();
+
         if (_triggerRange >= CalculatedDistance())
         {
             References.Instance.AudioHandler.PlaySound(_commandHandlerBase.DataUnitHolder._soundConfig);
@@ -41,7 +40,6 @@ public class EnemyIdleController : ICommandHandler
             return;
         }
     }
-
 
     private float CalculatedDistance()
     {

@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class EnemyMoveController : ICommandHandler
 {
     private CommandHandlerBase _commandHandlerBase;
@@ -47,6 +46,7 @@ public class EnemyMoveController : ICommandHandler
 
             if (distanceToTarget <= _commandHandlerBase.DataUnitHolder.AttackRange)
             {
+
                 _command.IsComplete = true;
                 _commandHandlerBase.SetCommand(new CommandBase(CommandType.Attack));
                 return;
